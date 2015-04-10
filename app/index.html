@@ -1,0 +1,31 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AngularJS RequireJS Example</title>
+        <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    </head>
+    <body ng-controller="ModalDemoCtrl">
+        <button class="btn btn-default" ng-click="open()">Open me!</button>
+        <script type="text/ng-template" id="modalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{greet + " " + name}}</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a ng-click="selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+        </script>
+        <script src="lib/requirejs/require.js" data-main="js/requireConfig.js"></script>
+    </body>
+</html>
