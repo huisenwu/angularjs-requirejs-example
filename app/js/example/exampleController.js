@@ -2,7 +2,7 @@ define(['angular'], function(angular) {
     angular.module('exampleController', [])
     .controller('ModalDemoCtrl', ['$scope', '$modal', '$log', function($scope, $modal, $log) {
         $scope.greet = "Hello World";
-        $scope.name = "Hui Wu";
+        $scope.name = "Sir";
 
         $scope.items = ['item1', 'item2', 'item3'];
 
