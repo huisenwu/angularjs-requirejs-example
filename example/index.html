@@ -5,27 +5,24 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>AngularJS RequireJS Example</title>
-        <link href="../bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
-    <body ng-controller="ModalDemoCtrl">
-        <button class="btn btn-default" ng-click="open()">Open me!</button>
-        <script type="text/ng-template" id="modalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">Hello World</h3>
+    <body>
+        <div class="container" ng-controller="ExampleController as example">
+            <div role="tabpanel">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{active: example.isSet(1)}"><a href="#test1" role="tab" ng-click="example.setTab(1)">Test1</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(2)}"><a href="#test2" role="tab" ng-click="example.setTab(2)">Test2</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(3)}"><a href="#other" role="tab" ng-click="example.setTab(3)">Other</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(1)}"><chtr-portal-test/></div>
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}"><external-directive name="example.name"/></div>
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(3)}">Other Content</div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-        </script>
         <script src="../bower_components/requirejs/require.js" data-main="js/requireConfig.js"></script>
     </body>
 </html>

@@ -1,9 +1,11 @@
 require.config({
     paths: {
-        angular: '../../bower_components/angular/angular',
-        jquery: '../../bower_components/jquery/dist/jquery',
-        bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap',
-        uiBootstrap: '../../bower_components/angular-bootstrap/ui-bootstrap-tpls'
+        'angular': '../../bower_components/angular/angular',
+        'jquery': '../../bower_components/jquery/dist/jquery',
+        'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
+        'react': '../../bower_components/react/react-with-addons',
+        'ngReact': '../../bower_components/ngReact/ngReact',
+        'react-bootstrap': '../../bower_components/react-bootstrap/react-bootstrap'
     },
     shim: {
         angular: {
@@ -13,13 +15,16 @@ require.config({
         jquery: {
             exports: 'jquery'
         },
-        uiBootstrap: {
-            deps: ['angular']
-        },
         bootstrap: {
             deps: ['jquery']
         }
     }
 });
 
-require(['start']);
+require.config({
+    'paths': {
+        'webpack/example': '/static/example/0.0'
+    }
+});
+
+require(['startUp']);
