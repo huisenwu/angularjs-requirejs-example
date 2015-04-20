@@ -8,7 +8,7 @@
     "AngularJS",
     "RequireJS"
   ],
-  "license": "MIT",
+  "license": "",
   "devDependencies": {
     "requirejs": "~2.1.17",
     "angular": "~1.3.15",
