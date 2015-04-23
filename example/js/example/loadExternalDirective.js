@@ -1,6 +1,6 @@
 define(['angular'], function (angular) {
-    angular.module('externalDirective', [])
-        .directive('externalDirective', function($compile) {
+    angular.module('loadExternalDirective', [])
+        .directive('loadExternal', function($compile) {
             return {
                 restrict: 'E',
                 scope: {
