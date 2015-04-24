@@ -1,6 +1,16 @@
-define(['angular'], function (angular) {
-    angular.module('loadExternalDirective', [])
-        .directive('loadExternal', function($compile) {
+define(['angular', 'webpack/example/index-angular', 'ngReact'], function (angular, Example) {
+    angular.module('loadExternalDirective', ['react'])
+        .config(function($compileProvider, $provide) {
+            this.value = function(name, value) {
+                $provide.value(name, value);
+                return(this);
+            };
+            this.directive = function( name, factory ) {
+                $compileProvider.directive( name, factory );
+                return(this);
+            };
+            Example.registerDirective(this, 'Test');
+        }).directive('loadExternal', function($compile) {
             return {
                 restrict: 'E',
                 scope: {
@@ -13,9 +23,6 @@ define(['angular'], function (angular) {
                     };
                 },
                 link: function(scope, elem, attrs, ctrl) {
-                    //console.log("postLink scope: " + scope.name);
-                    //console.log("postLink before processing: " + elem[0].outerHTML);
-
                     var attributes = scope.props ? ' ' + Object.keys(scope.props).map(function(prop) {
                         return ctrl.toDash(prop) + '=' + '"props.' + prop + '"';
                     }).join(' ') : '';
@@ -23,7 +30,6 @@ define(['angular'], function (angular) {
                     var html = '<' + scope.name + attributes + '/>';
                     var compiled = $compile(html)(scope);
                     elem.append(compiled);
-                    //console.log("postLink after processing: " + elem[0].outerHTML);
                 }
             };
         });

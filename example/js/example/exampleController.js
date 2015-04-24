@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            this.name = 'chtr-example-test';
+            this.name = 'example-test';
 
             this.propTest = function() {
                 console.log('Pass function directly successfully!');
