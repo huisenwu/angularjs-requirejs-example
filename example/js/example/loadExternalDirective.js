@@ -9,7 +9,7 @@ define(['angular', 'webpack/example/index-angular', 'ngReact'], function (angula
                 $compileProvider.directive( name, factory );
                 return(this);
             };
-            Example.registerDirective(this, 'Test');
+            Example.Test.registerDirective(this, 'Test');
         }).directive('loadExternal', function($compile) {
             return {
                 restrict: 'E',
