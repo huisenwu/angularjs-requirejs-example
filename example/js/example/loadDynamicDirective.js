@@ -1,16 +1,6 @@
-define(['angular', 'webpack/example/index-angular', 'ngReact'], function (angular, Example) {
-    angular.module('loadExternalDirective', ['react'])
-        .config(function($compileProvider, $provide) {
-            this.value = function(name, value) {
-                $provide.value(name, value);
-                return(this);
-            };
-            this.directive = function( name, factory ) {
-                $compileProvider.directive( name, factory );
-                return(this);
-            };
-            Example.Test.registerDirective(this, 'Test');
-        }).directive('loadExternal', function($compile) {
+define(['angular'], function (angular) {
+    angular.module('loadDynamicDirective', [])
+        .directive('loadDynamic', function($compile) {
             return {
                 restrict: 'E',
                 scope: {

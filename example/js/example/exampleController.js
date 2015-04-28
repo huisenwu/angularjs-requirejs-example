@@ -10,17 +10,5 @@ define(['angular'], function(angular) {
             this.isSet = function (tabId) {
                 return this.tab === tabId;
             };
-
-            this.name = 'example-test';
-
-            this.propTest = function() {
-                console.log('Pass function directly successfully!');
-            };
-
-            this.props = {
-                propTest: function() {
-                    console.log('Pass function from dynamic directive successfully!');
-                }
-            };
         });
 });

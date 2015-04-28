@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>AngularJS RequireJS Example</title>
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/search.css" rel="stylesheet">
     </head>
     <body>
         <div class="container" ng-controller="ExampleController as example">
@@ -17,9 +18,15 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(1)}"><example-test prop-test="example.propTest"/></div>
-                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}"><load-external name="example.name" props="example.props"/></div>
-                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(3)}">Other Content</div>
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(1)}">
+                        <example-test></example-test>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}">
+                        <!--<example-search></example-search>-->
+                    </div>
+                    <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(3)}">
+                        Other Content
+                    </div>
                 </div>
             </div>
         </div>

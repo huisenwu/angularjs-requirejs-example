@@ -1,3 +1,3 @@
-define(['angular', 'example/exampleController', 'example/loadExternalDirective'], function(angular) {
-    angular.module('exampleApp', ['exampleController', 'loadExternalDirective']);
+define(['angular', 'example/exampleController', 'example/registerReactDirective', 'example/loadDynamicDirective'], function(angular) {
+    angular.module('exampleApp', ['exampleController', 'registerReactDirective', 'loadDynamicDirective']);
 });
