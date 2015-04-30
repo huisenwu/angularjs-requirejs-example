@@ -2,6 +2,7 @@ require.config({
     paths: {
         'angular': '../../bower_components/angular/angular',
         'jquery': '../../bower_components/jquery/dist/jquery',
+        'text': '../../bower_components/text/text',
         'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
         'react': '../../bower_components/react/react-with-addons',
         'ngReact': '../../bower_components/ngReact/ngReact',
@@ -23,7 +24,8 @@ require.config({
 
 require.config({
     'paths': {
-        'webpack/example': '/static/example/0.0'
+        'angular-register': 'common/directiveRegister',
+        'webpack': '../../webpack/dist'
     }
 });
 

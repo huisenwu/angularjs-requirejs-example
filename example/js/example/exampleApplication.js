@@ -1,3 +1,10 @@
-define(['angular', 'example/exampleController', 'example/registerReactDirective', 'example/loadDynamicDirective'], function(angular) {
-    angular.module('exampleApp', ['exampleController', 'registerReactDirective', 'loadDynamicDirective']);
+define(['angular',
+        'angular-register',
+        'common/directiveLoader',
+        'example/exampleController',
+        'example/exampleConfig'],
+    function(angular) {
+        angular.module('exampleApp', ['exampleController',
+                                    'directiveLoader',
+                                    'directiveRegister']);
 });

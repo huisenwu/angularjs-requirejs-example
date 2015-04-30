@@ -1,5 +1,5 @@
 define(['angular'], function (angular) {
-    angular.module('loadDynamicDirective', [])
+    angular.module('directiveLoader', [])
         .directive('loadDynamic', function($compile) {
             return {
                 restrict: 'E',
