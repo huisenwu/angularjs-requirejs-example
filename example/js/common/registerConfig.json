@@ -1,6 +1,7 @@
 {
     "dnames": {
         "search": "portalSearch",
-        "hello": "portalHello"
+        "hello": "portalHello",
+        "hi": "portalHi"
     }
 }

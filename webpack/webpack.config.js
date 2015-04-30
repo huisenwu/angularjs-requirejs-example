@@ -4,7 +4,8 @@ module.exports = {
     context: __dirname + '/src',
     entry: {
         "search": "./search.js",
-        "hello": "./hello.js"
+        "hello": "./hello.js",
+        "hi": "./hi.js"
     },
     output: {
         filename: "[name].js",

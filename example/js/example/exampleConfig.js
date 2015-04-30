@@ -1,1 +1,1 @@
-define(['webpack/search', 'webpack/hello']);
+define(['webpack/search', 'webpack/hello', 'webpack/hi']);
