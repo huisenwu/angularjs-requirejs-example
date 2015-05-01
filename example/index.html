@@ -20,10 +20,10 @@
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(1)}">
                         <!--<default-hello/>-->
-                        <portal-hello></portal-hello>
-                        <!--<portal-hello><portal-hi/></portal-hello>-->
+                        <!--<portal-hello></portal-hello>-->
+                        <portal-hello><portal-hi/></portal-hello>
                         <portal-hello>Hello worrrrrrlllld!!!!</portal-hello>
-                        <!--<portal-hello><span ng-repeat="i in [1,2,3]">test {i}</span></portal-hello>-->
+                        <portal-hello><div><span x-ng-repeat="i in [1,2,3]">Test {{i}}</span></div></portal-hello>
                     </div>
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}">
                         <!--<default-search/>-->

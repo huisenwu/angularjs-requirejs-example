@@ -10,5 +10,7 @@ define(['angular'], function(angular) {
             this.isSet = function (tabId) {
                 return this.tab === tabId;
             };
+
+            this.name = "portal-search";
         });
 });

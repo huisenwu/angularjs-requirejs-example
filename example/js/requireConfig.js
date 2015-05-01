@@ -5,7 +5,7 @@ require.config({
         'text': '../../bower_components/text/text',
         'bootstrap': '../../bower_components/bootstrap/dist/js/bootstrap',
         'react': '../../bower_components/react/react-with-addons',
-        'ngReact': '../../bower_components/ngReact/ngReact',
+        'ngReact': '../../vendor/ngReact-with-transclude',
         'react-bootstrap': '../../bower_components/react-bootstrap/react-bootstrap'
     },
     shim: {
