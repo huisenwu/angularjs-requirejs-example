@@ -87,7 +87,7 @@
 
     $timeout(function() {
         if(child) {
-            React.render(React.createElement(component, props, React.createElement(child)), elem[0]);
+            React.render(React.createElement(component, props, child), elem[0]);
         } else {
             React.render(React.createElement(component, props), elem[0]);
         }
@@ -188,8 +188,6 @@
             var child = {};
             if(transclude) {
                 var childNode = transclude()[0];
-                
-                //@TODO MOVE THIS
                 var NodeWrapper = React.createClass({
                     insertChildren: function(component) {
                         React.findDOMNode(component).appendChild(this.props.childNode);
@@ -198,8 +196,7 @@
                         return React.createElement('div', {ref: this.insertChildren});
                     }
                 });
-
-                child = React.createClass(NodeWrapper, {childNode: childNode}, null);
+                child = React.createElement(NodeWrapper, {childNode: childNode}, null);
             }
 
             renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, child);
