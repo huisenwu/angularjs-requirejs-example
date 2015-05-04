@@ -11,6 +11,7 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            this.name = "portal-search";
+            this.dname = "portal-search";
+            this.names = ['Joe', 'Dan', 'Mike', 'James'];
         });
 });
