@@ -172,34 +172,28 @@
       var directive = {
         restrict: 'E',
         replace: true,
-        link: function(scope, elem, attrs, ctrl, transclude) {
+        transclude: true,
+        link: function(scope, elem, attrs, ctrl, transcludeFn) {
           var reactComponent = getReactComponent(reactComponentName, $injector);
 
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
 
           // for each of the properties, get their scope value and set it to scope.props
+          // TODO Add comments for transclude
           var renderMyComponent = function() {
             var props = {};
             propNames.forEach(function(propName) {
               props[propName] = scope.$eval(attrs[propName]);
             });
 
-            var child = {};
-            if(transclude) {
-                var childNode = transclude()[0];
-                var NodeWrapper = React.createClass({
-                    insertChildren: function(component) {
-                        React.findDOMNode(component).appendChild(this.props.childNode);
-                    },
-                    render: function() {
-                        return React.createElement('div', {ref: this.insertChildren});
-                    }
-                });
-                child = React.createElement(NodeWrapper, {childNode: childNode}, null);
+            var transcludedContent = transcludeFn();
+            var transcludedComponent = null;
+            if(transcludedContent.length) {
+              transcludedComponent = React.createElement(ElementsWrapper, {elemets: transcludedContent.toArray()});
             }
 
-            renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, child);
+            renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, transcludedComponent);
           };
 
           // watch each property name and trigger an update whenever something changes,
@@ -219,6 +213,21 @@
       return angular.extend(directive, conf);
     };
   };
+
+  // TODO Add Comments
+  var ElementsWrapper = React.createClass({
+      appendElements: function(component) {
+          if(this.props.elemets) {
+            var node = React.findDOMNode(component);
+            this.props.elemets.forEach(function(e) {
+              node.appendChild(e);
+            });
+          }
+      },
+      render: function() {
+          return React.createElement('div', {ref: this.appendElements});
+      }
+  });
 
   // create the end module without any dependencies, including reactComponent and reactDirective
   return angular.module('react', [])

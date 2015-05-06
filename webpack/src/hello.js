@@ -2,7 +2,7 @@ define(['external/angular-register', './components/hello'], function(register, H
     if(register) {
         var dname = (register.dnames && register.dnames.hello) || 'defaultHello';
         register.app.directive(dname, ['reactDirective', function(reactDirective) {
-            return reactDirective(Hello, null, {transclude: true});
+            return reactDirective(Hello);
         }]);
     }
 });

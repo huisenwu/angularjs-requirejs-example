@@ -11,7 +11,16 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            this.dname = "portal-search";
-            this.names = ['Joe', 'Dan', 'Mike', 'James'];
+            //this.dname = "portal-search";
+            //this.names = ['Joe', 'Dan', 'Mike', 'James'];
+            this.hello = "Hello World!";
+            this.updateHello = function() {
+              console.log("updateHello called");
+              if(this.hello === "Hello World!") {
+                this.hello = "Hi World!";
+              } else {
+                this.hello = "Hello World!";
+              }
+            };
         });
 });
