@@ -11,8 +11,8 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            //this.dname = "portal-search";
-            //this.names = ['Joe', 'Dan', 'Mike', 'James'];
+            /*this.dname = "portal-search";
+            this.names = ['Joe', 'Dan', 'Mike', 'James'];
             this.hello = "Hello World!";
             this.updateHello = function() {
               if(this.hello === "Hello World!") {
@@ -20,12 +20,16 @@ define(['angular'], function(angular) {
               } else {
                 this.hello = "Hello World!";
               }
-            };
+            };*/
 
             this.styles = ['primary','success','info','warning','danger','link'];
             this.test = 'Test';
             this.updateTest = function() {
               this.test = 'Tested';
             };
+            this.disabled = true;
+            this.size = ['large', 'small', 'xsmall'];
+            this.block = true;
+            this.title = 'Dropdown';
         });
 });

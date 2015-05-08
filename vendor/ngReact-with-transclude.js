@@ -171,16 +171,18 @@
         transclude: true,
         link: function(scope, elem, attrs, ctrl, transcludeFn) {
           var reactComponent = getReactComponent(reactComponentName, $injector);
+          console.log("Component: "+reactComponent);
 
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
 
-          // TODO Add comments for transclude
+          // if transclusion function is defined, create a React componenet that wraps the transcluded content
           var transcludedComponent = null;
           if(transcludeFn) {
             transcludeFn(function(clone, scope){
               if(clone.length) {
                 transcludedComponent = React.createElement(ElementsWrapper, {elemets: clone.toArray()});
+                //console.log(transcludedComponent);
               }
             });
           }
@@ -191,7 +193,6 @@
             propNames.forEach(function(propName) {
               props[propName] = scope.$eval(attrs[propName]);
             });
-
             renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, transcludedComponent);
           };
 
@@ -213,13 +214,13 @@
     };
   };
 
-  // TODO Add Comments
+  // A React component that interacts with the browser and wraps the DOM nodes
   var ElementsWrapper = React.createClass({
       appendElements: function(component) {
           if(this.props.elemets) {
             var node = React.findDOMNode(component);
-            this.props.elemets.forEach(function(e) {
-              node.appendChild(e);
+            this.props.elemets.forEach(function(elem) {
+              if(!isIgnorable(elem)) node.appendChild(elem);
             });
           }
       },
@@ -227,6 +228,12 @@
           return React.createElement('span', {ref: this.appendElements});
       }
   });
+
+  // Determine if a node should be ignored by the iterator functions.
+  function isIgnorable(nod) {
+    return (nod.nodeType == 8) || // A comment node
+          ((nod.nodeType == 3) && !(new RegExp('/[^\t\n\r]/').test(nod.textContent))); // a text node, all whitespace
+  }
 
   // create the end module without any dependencies, including reactComponent and reactDirective
   return angular.module('react', [])

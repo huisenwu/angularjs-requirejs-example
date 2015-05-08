@@ -12,9 +12,9 @@
         <div class="container" ng-controller="ExampleController as example">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" ng-class="{active: example.isSet(1)}"><a href="#test1" role="tab" ng-click="example.setTab(1)">Test1</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(1)}"><a href="#test1" role="tab" ng-click="example.setTab(1)">Test</a></li>
                     <li role="presentation" ng-class="{active: example.isSet(2)}"><a href="#test2" role="tab" ng-click="example.setTab(2)">Test2</a></li>
-                    <li role="presentation" ng-class="{active: example.isSet(3)}"><a href="#other" role="tab" ng-click="example.setTab(3)">Test3</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(3)}"><a href="#other" role="tab" ng-click="example.setTab(3)">Button</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -26,27 +26,41 @@
                         <!--<ui-hello><ui-hi/></ui-hello>
                         <ui-hello>Hello worrrrrrlllld!!!!</ui-hello>
                         <ui-hello><div><span x-ng-repeat="name in example.names">Hello {{name}}<br></span></div></ui-hello>-->
-                        <!--<ui-search></ui-search>-->
+                        <ui-search></ui-search>
                     </div>
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}">
                     </div>
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(3)}">
-                      <div>
+                      <!--<div>
                         <ui-button-toolbar>
                           <ui-button ng-click="example.updateTest()">Default</ui-button>
-                          <ui-button bs-style="example.styles[0]">Primary</ui-button>
-                          <ui-button bs-style="example.styles[1]">Success</ui-button>
+                          <ui-button bs-style="example.styles[0]" disabled="example.disabled">Primary</ui-button>
+                          <ui-button bs-style="example.styles[1]" bs-size="example.size[0]">Success</ui-button>
                           <ui-button bs-style="example.styles[2]">Info</ui-button>
-                          <ui-button bs-style="example.styles[3]">Warning</ui-button>
+                          <ui-button bs-style="example.styles[3]" bs-size="example.size[2]">Warning</ui-button>
                           <ui-button bs-style="example.styles[4]">Danger</ui-button>
                           <ui-button bs-style="example.styles[5]">Link</ui-button>
+                          <ui-button block="example.block">{{example.test}}</ui-button>
                         </ui-button-toolbar>
-                      </div>
-                      <div><p>{{example.test}}</p></div>
-                      <div>
+                      </div>-->
+                      <!--<div>
                         <ui-button-toolbar>
-                          <div><span ng-repeat="style in example.styles" ><ui-button bs-style="style">{{style}}</ui-button></span></div>
+                          <ui-button-group bs-size="example.size[2]">
+                            <ui-button>Left</ui-button>
+                            <ui-button>Middle</ui-button>
+                            <ui-button>Right</ui-button>
+                          </ui-button-group>
                         </ui-button-toolbar>
+                      </div>-->
+                      <div>
+                        <ui-button-group>
+                          <ui-button>1</ui-button>
+                          <ui-button>2</ui-button>
+                          <ui-dropdown-button title="example.title">
+                            <ui-menu-item>Dropdown link</ui-menu-item>
+                            <ui-menu-item>Dropdown link</ui-menu-item>
+                          </ui-dropdown-button>
+                        </ui-button-group>
                       </div>
                     </div>
                 </div>

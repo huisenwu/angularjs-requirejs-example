@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../bower_components/react/react-with-addons.js"></script>
+    <script src="../bower_components/react/JSXTransformer.js"></script>
+    <script src="../bower_components/react-bootstrap/react-bootstrap.js"></script>
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+      var BS = ReactBootstrap;
+      React.render(
+        <BS.ButtonGroup bsSize="xsmall">
+          <BS.Button>Left</BS.Button>
+          <BS.Button>Middle</BS.Button>
+          <BS.Button>Right</BS.Button>
+        </BS.ButtonGroup>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
