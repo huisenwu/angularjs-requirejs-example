@@ -86,11 +86,7 @@
   function renderComponent(component, props, $timeout, elem, child) {
 
     $timeout(function() {
-        if(child) {
-            React.render(React.createElement(component, props, child), elem[0]);
-        } else {
-            React.render(React.createElement(component, props), elem[0]);
-        }
+      React.render(React.createElement(component, props, child), elem[0]);
     });
   }
 
@@ -179,19 +175,22 @@
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
 
-          // for each of the properties, get their scope value and set it to scope.props
           // TODO Add comments for transclude
+          var transcludedComponent = null;
+          if(transcludeFn) {
+            transcludeFn(function(clone, scope){
+              if(clone.length) {
+                transcludedComponent = React.createElement(ElementsWrapper, {elemets: clone.toArray()});
+              }
+            });
+          }
+
+          // for each of the properties, get their scope value and set it to scope.props
           var renderMyComponent = function() {
             var props = {};
             propNames.forEach(function(propName) {
               props[propName] = scope.$eval(attrs[propName]);
             });
-
-            var transcludedContent = transcludeFn();
-            var transcludedComponent = null;
-            if(transcludedContent.length) {
-              transcludedComponent = React.createElement(ElementsWrapper, {elemets: transcludedContent.toArray()});
-            }
 
             renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, transcludedComponent);
           };
@@ -225,7 +224,7 @@
           }
       },
       render: function() {
-          return React.createElement('div', {ref: this.appendElements});
+          return React.createElement('span', {ref: this.appendElements});
       }
   });
 

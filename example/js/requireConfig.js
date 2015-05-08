@@ -24,7 +24,6 @@ require.config({
 
 require.config({
     'paths': {
-        'angular-register': 'common/directiveRegister',
         'webpack': '../../webpack/dist'
     }
 });

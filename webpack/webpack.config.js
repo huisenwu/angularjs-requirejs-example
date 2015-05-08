@@ -3,9 +3,7 @@ var webpack = require('webpack');
 module.exports = {
     context: __dirname + '/src',
     entry: {
-        "search": "./search.js",
-        "hello": "./hello.js",
-        "hi": "./hi.js"
+        "index": "./index.js"
     },
     output: {
         filename: "[name].js",
@@ -20,9 +18,8 @@ module.exports = {
         }]
     },
     externals: {
-         'external/react': "amd react",
-         'external/react-bootstrap': "amd react-bootstrap",
-         'external/angular-register': "amd angular-register"
+         'react': "amd react"
+         //'external/react-bootstrap': "amd react-bootstrap"
     },
     plugins: [
         new webpack.OldWatchingPlugin(),

@@ -1,7 +1,3 @@
 {
-    "dnames": {
-        "search": "portalSearch",
-        "hello": "portalHello",
-        "hi": "portalHi"
-    }
+    "prefix": "ui"
 }

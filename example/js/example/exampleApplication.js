@@ -1,8 +1,7 @@
 define(['angular',
-        'angular-register',
+        'common/directiveRegister',
         'common/directiveLoader',
-        'example/exampleController',
-        'example/exampleConfig'],
+        'example/exampleController'],
     function(angular) {
         angular.module('exampleApp', ['exampleController',
                                     'directiveLoader',

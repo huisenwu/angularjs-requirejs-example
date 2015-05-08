@@ -1,4 +1,4 @@
-define(['external/react'], function(React) {
+define(['react'], function(React) {
     return React.createClass({
         displayName: 'example/search',
         render: function() {

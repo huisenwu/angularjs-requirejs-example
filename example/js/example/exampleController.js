@@ -15,12 +15,17 @@ define(['angular'], function(angular) {
             //this.names = ['Joe', 'Dan', 'Mike', 'James'];
             this.hello = "Hello World!";
             this.updateHello = function() {
-              console.log("updateHello called");
               if(this.hello === "Hello World!") {
                 this.hello = "Hi World!";
               } else {
                 this.hello = "Hello World!";
               }
+            };
+
+            this.styles = ['primary','success','info','warning','danger','link'];
+            this.test = 'Test';
+            this.updateTest = function() {
+              this.test = 'Tested';
             };
         });
 });
