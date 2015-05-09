@@ -84,7 +84,6 @@
 
   // render React component, with scope[attrs.props] being passed in as the component props
   function renderComponent(component, props, $timeout, elem, child) {
-
     $timeout(function() {
       React.render(React.createElement(component, props, child), elem[0]);
     });
@@ -171,7 +170,6 @@
         transclude: true,
         link: function(scope, elem, attrs, ctrl, transcludeFn) {
           var reactComponent = getReactComponent(reactComponentName, $injector);
-          console.log("Component: "+reactComponent);
 
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
@@ -182,7 +180,6 @@
             transcludeFn(function(clone, scope){
               if(clone.length) {
                 transcludedComponent = React.createElement(ElementsWrapper, {elemets: clone.toArray()});
-                //console.log(transcludedComponent);
               }
             });
           }
@@ -220,7 +217,9 @@
           if(this.props.elemets) {
             var node = React.findDOMNode(component);
             this.props.elemets.forEach(function(elem) {
-              if(!isIgnorable(elem)) node.appendChild(elem);
+              if(!isIgnorable(elem)) {
+                node.appendChild(elem);
+              }
             });
           }
       },
