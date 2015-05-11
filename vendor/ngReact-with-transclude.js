@@ -114,7 +114,6 @@
       replace: true,
       link: function(scope, elem, attrs) {
         var reactComponent = getReactComponent(attrs.name, $injector);
-
         var renderMyComponent = function() {
           var scopeProps = scope.$eval(attrs.props);
           var props = applyFunctions(scopeProps, scope);
@@ -170,18 +169,20 @@
         transclude: true,
         link: function(scope, elem, attrs, ctrl, transcludeFn) {
           var reactComponent = getReactComponent(reactComponentName, $injector);
+          console.log(React.Children);
 
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
 
           // if transclusion function is defined, create a React componenet that wraps the transcluded content
-          var transcludedComponent = null;
+          var transReactComp;
           if(transcludeFn) {
-            var transcludedContent = null;
-            transcludeFn(function(clone){
-              transcludedContent = clone;
+            var transContent, transScope;
+            transcludeFn(function(clone, scope){
+              transContent = clone;
+              transScope = scope;
             });
-            transcludedComponent = React.createElement(ElementsWrapper, {elemets: transcludedContent.toArray()});
+            transReactComp = React.createElement(ElementsWrapper, {elemets: transContent.toArray()});
           }
 
           // for each of the properties, get their scope value and set it to scope.props
@@ -190,7 +191,7 @@
             propNames.forEach(function(propName) {
               props[propName] = scope.$eval(attrs[propName]);
             });
-            renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, transcludedComponent);
+            return renderComponent(reactComponent, applyFunctions(props, scope), $timeout, elem, transReactComp);
           };
 
           // watch each property name and trigger an update whenever something changes,
@@ -213,19 +214,19 @@
 
   // A React component that interacts with the browser and wraps the DOM nodes
   var ElementsWrapper = React.createClass({
-      appendElements: function(component) {
-          if(this.props.elemets) {
-            var node = React.findDOMNode(component);
-            this.props.elemets.forEach(function(elem) {
-              if(!isIgnorable(elem)) {
-                node.appendChild(elem);
-              }
-            });
+    appendElements: function(component) {
+      if(this.props.elemets) {
+        var node = React.findDOMNode(component);
+        this.props.elemets.forEach(function(elem) {
+          if(!isIgnorable(elem)) {
+            node.appendChild(elem);
           }
-      },
-      render: function() {
-          return React.createElement('span', {ref: this.appendElements});
+        });
       }
+    },
+    render: function() {
+      return React.createElement('span', {ref: this.appendElements});
+    }
   });
 
   // Determine if a node should be ignored by the iterator functions.
