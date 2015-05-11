@@ -177,11 +177,11 @@
           // if transclusion function is defined, create a React componenet that wraps the transcluded content
           var transcludedComponent = null;
           if(transcludeFn) {
-            transcludeFn(function(clone, scope){
-              if(clone.length) {
-                transcludedComponent = React.createElement(ElementsWrapper, {elemets: clone.toArray()});
-              }
+            var transcludedContent = null;
+            transcludeFn(function(clone){
+              transcludedContent = clone;
             });
+            transcludedComponent = React.createElement(ElementsWrapper, {elemets: transcludedContent.toArray()});
           }
 
           // for each of the properties, get their scope value and set it to scope.props
@@ -229,9 +229,9 @@
   });
 
   // Determine if a node should be ignored by the iterator functions.
-  function isIgnorable(nod) {
-    return (nod.nodeType == 8) || // A comment node
-          ((nod.nodeType == 3) && !(new RegExp('/[^\t\n\r]/').test(nod.textContent))); // a text node, all whitespace
+  function isIgnorable(node) {
+    return (node.nodeType == 8) || // A comment node
+          ((node.nodeType == 3) && !(new RegExp('/[^\t\n\r]/').test(node.textContent))); // a text node, all whitespace
   }
 
   // create the end module without any dependencies, including reactComponent and reactDirective

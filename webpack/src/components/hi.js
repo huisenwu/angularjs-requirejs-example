@@ -1,6 +1,6 @@
 define(['react'], function(React) {
     return React.createClass({
-        displayName: 'example/hello',
+        displayName: 'example/hi',
         componentDidMount: function() {
           console.log('initial rendering hi componenet!');
         },

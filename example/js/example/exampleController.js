@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            /*this.dname = "portal-search";
+            this.dname = "ui-search";
             this.names = ['Joe', 'Dan', 'Mike', 'James'];
             this.hello = "Hello World!";
             this.updateHello = function() {
@@ -20,7 +20,7 @@ define(['angular'], function(angular) {
               } else {
                 this.hello = "Hello World!";
               }
-            };*/
+            };
 
             this.styles = ['primary','success','info','warning','danger','link'];
             this.test = 'Test';
