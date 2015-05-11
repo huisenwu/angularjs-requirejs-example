@@ -169,7 +169,6 @@
         transclude: true,
         link: function(scope, elem, attrs, ctrl, transcludeFn) {
           var reactComponent = getReactComponent(reactComponentName, $injector);
-          console.log(React.Children);
 
           // if propNames is not defined, fall back to use the React component's propTypes if present
           propNames = propNames || Object.keys(reactComponent.propTypes || {});
