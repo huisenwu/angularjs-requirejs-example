@@ -13,8 +13,8 @@
         <div class="container" ng-controller="ExampleController as example">
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" ng-class="{active: example.isSet(1)}"><a href="#test1" role="tab" ng-click="example.setTab(1)">Test</a></li>
-                    <li role="presentation" ng-class="{active: example.isSet(2)}"><a href="#test2" role="tab" ng-click="example.setTab(2)">Test2</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(1)}"><a href="#test1" role="tab" ng-click="example.setTab(1)">Example</a></li>
+                    <li role="presentation" ng-class="{active: example.isSet(2)}"><a href="#test2" role="tab" ng-click="example.setTab(2)">Panel</a></li>
                     <li role="presentation" ng-class="{active: example.isSet(3)}"><a href="#other" role="tab" ng-click="example.setTab(3)">Button</a></li>
                 </ul>
 
@@ -40,6 +40,24 @@
                         <!--<ui-search></ui-search>-->
                     </div>
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(2)}">
+                      <div class="exampleDiv">
+                        <ui-panel>Basic panel example</ui-panel>
+                        <ui-panel header="example.panel.titles[0]" footer="example.panel.foot">Panel content</ui-panel>
+                        <ui-panel header="example.panel.titles[1]" bs-style="example.styles[0]">Panel content</ui-panel>
+                        <ui-panel collapsible="example.yes" default-expanded="example.yes">
+                          Some default panel content here.
+                          <ui-list-group fill="example.yes">
+                            <ui-list-group-item>Item 1</ui-list-group-item>
+                            <ui-list-group-item>Item 2</ui-list-group-item>
+                            <ui-list-group-item>&hellip;</ui-list-group-item>
+                          </ui-list-group>
+                          Some more panel content here.
+                        </ui-panel>
+                        <ui-panel-group default-active-key="example.panel.events[1]" accordion="example.yes">
+                          <ui-panel header="example.panel.head[0]" event-key="example.panel.events[0]">Panel 1 content</ui-panel>
+                          <ui-panel header="example.panel.head[1]" event-key="example.panel.events[1]">Panel 2 content</ui-panel>
+                        </ui-panel-group>
+                      </div>
                     </div>
                     <div role="tabpanel" class="tab-pane" ng-class="{active: example.isSet(3)}">
                       <div class="exampleDiv">

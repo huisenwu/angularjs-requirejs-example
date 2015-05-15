@@ -230,8 +230,7 @@
 
   // Determine if a node should be ignored by the iterator functions.
   function isIgnorable(node) {
-    return (node.nodeType == 8) || // A comment node
-          ((node.nodeType == 3) && !(new RegExp('/[^\t\n\r]/').test(node.textContent))); // a text node, all whitespace
+    return node.nodeType == 3 && !(new RegExp('/[^\t\n\r]/').test(node.textContent)); // a text node, all whitespace
   }
 
   // create the end module without any dependencies, including reactComponent and reactDirective

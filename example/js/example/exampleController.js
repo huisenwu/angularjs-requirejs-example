@@ -1,4 +1,4 @@
-define(['angular'], function(angular) {
+define(['angular', 'react'], function(angular, React) {
     angular.module('exampleController', [])
         .controller('ExampleController', function() {
             this.tab = 1;
@@ -11,7 +11,7 @@ define(['angular'], function(angular) {
                 return this.tab === tabId;
             };
 
-            this.dname = "ui-search";
+            /*this.dname = "ui-search";
             this.names = ['Joe', 'Dan', 'Mike', 'James'];
             this.hello = "Hello World!";
             this.updateHello = function() {
@@ -20,7 +20,7 @@ define(['angular'], function(angular) {
               } else {
                 this.hello = "Hello World!";
               }
-            };
+            };*/
 
             this.styles = ['primary','success','info','warning','danger','link'];
             this.test = 'Test';
@@ -31,5 +31,13 @@ define(['angular'], function(angular) {
             this.size = ['large', 'small', 'xsmall'];
             this.block = true;
             this.title = 'Dropdown';
+            this.yes = true;
+
+            this.panel = {
+              titles: ['Panel heading without title', React.createElement('h3', null, 'Panel Title')],
+              head: ['Panel 1', 'Panel 2'],
+              foot: 'Panel footer',
+              events:[1, 2]
+            };
         });
 });

@@ -10,12 +10,18 @@
     <div id="example"></div>
     <script type="text/jsx">
       var BS = ReactBootstrap;
+      const title = (
+        <h3>Panel title</h3>
+      );
       React.render(
-        <BS.ButtonGroup bsSize="xsmall">
-          <BS.Button>Left</BS.Button>
-          <BS.Button>Middle</BS.Button>
-          <BS.Button>Right</BS.Button>
-        </BS.ButtonGroup>,
+        <div>
+          <BS.Panel header='Panel heading without title'>
+            Panel content
+          </BS.Panel>
+          <BS.Panel header={title}>
+            Panel content
+          </BS.Panel>
+        </div>,
         document.getElementById('example')
       );
     </script>
