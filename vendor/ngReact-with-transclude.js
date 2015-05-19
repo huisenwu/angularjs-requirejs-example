@@ -181,7 +181,11 @@
               transContent = clone;
               transScope = scope;
             });
-            transReactComp = React.createElement(ElementsWrapper, {elemets: transContent.toArray()});
+
+            if(transContent) {
+              console.log(transContent);
+              transReactComp = React.createElement(ElementsWrapper, {elemets: transContent});
+            }
           }
 
           // for each of the properties, get their scope value and set it to scope.props
@@ -216,7 +220,7 @@
     appendElements: function(component) {
       if(this.props.elemets) {
         var node = React.findDOMNode(component);
-        this.props.elemets.forEach(function(elem) {
+        angular.forEach(this.props.elemets, function(elem) {
           if(!isIgnorable(elem)) {
             node.appendChild(elem);
           }
@@ -230,7 +234,7 @@
 
   // Determine if a node should be ignored by the iterator functions.
   function isIgnorable(node) {
-    return node.nodeType == 3 && !(new RegExp('/[^\t\n\r]/').test(node.textContent)); // a text node, all whitespace
+    return node.nodeType === 3 && !new RegExp('/[^\t\n\r]/').test(node.textContent); // a text node, all whitespace
   }
 
   // create the end module without any dependencies, including reactComponent and reactDirective
