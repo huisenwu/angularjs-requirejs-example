@@ -19,6 +19,7 @@
     "react": "~0.13.2",
     "ngReact": "~0.1.4",
     "text": "~2.0.14",
-    "angular-ui-bootstrap": "~0.13.0"
+    "angular-ui-bootstrap": "~0.13.0",
+    "ngReact-with-transclude": "git://github.com/huisenwu/ngReact-with-transclude.git"
   }
 }
