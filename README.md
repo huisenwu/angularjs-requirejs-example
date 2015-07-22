@@ -1,12 +1,12 @@
 # angularjs-requirejs-example
-1. Install Java 1.6
-2.	Install Weblogic \(wls)
-  1.	Launch integrated server
-  2.	Launch admin console
-  3.	Services -> Data Sources -> New Generic Data Source
-    1.	jndi: ctapCustomDataSource
-    2.	Database Type: MS SQL Server
-    3.	Driver: Oracleâ€™s MS SQL Server Driver \(Type 4) versions: 7.0 and later
-3.	Install plugins in JDeveloper
-4.	Clone Repo from Stash
-5.	Open Project in JDeveloper
+1. Test 
+2. Test
+  1. Test
+  2. Test
+  3. Test
+    1. Test
+    2. Test
+    3. Test
+3. Test
+4. Test
+5. Test
